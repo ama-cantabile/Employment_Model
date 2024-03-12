@@ -1,0 +1,55 @@
+<!-- templates/results.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .card-text {
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center">Results Page</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Information Entered</h3>
+                    <p class="card-text">IQ Score: {{ iqScore }}</p>
+                    <p class="card-text">Communication Skill: {{ communicationSkill }}</p>
+                    <p class="card-text">Project Management Experience: {{ projectManagementExperience }}</p>
+                    <p class="card-text">Programming Proficiency: {{ programmingProfiency }}</p>
+                    <p class="card-text">Leadership Ability: {{ leadershipAbility }}</p>
+                    <p class="card-text">Technical Knowledge: {{ technicalKnowldge }}</p>
+                    <p class="card-text">Creativity Score: {{ creativityScore }}</p>
+                    <p class="card-text">Analytical Skills: {{ analyticalSkills }}</p>
+                    <p class="card-text">Teamwork Ability: {{ teamworkAbility }}</p>
+                    <p class="card-text">Problem Solving Ability: {{ problemSolvingAbility }}</p>
+                    <p class="card-text">Prediction: {{ prediction }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

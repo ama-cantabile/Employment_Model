@@ -1,0 +1,144 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .form-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: inline-block; /* Changed from block to inline-block */
+        font-weight: bold;
+        margin-right: 10px; /* Added margin to separate radio buttons and labels */
+    }
+
+    .form-group input[type="radio"],
+    .form-group input[type="text"],
+    .form-group input[type="number"] {
+        display: inline-block; /* Changed from block to inline-block */
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    .btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .error {
+        color: red;
+    }
+</style>
+
+
+
+<div class="form-container">
+    <h1>Employment Modelling Test</h1>
+
+    <h3> Designed by {{ firstName }} {{ lastName }}</h3>
+
+    <!-- This form references the homePost route. -->
+    <form action="{% url 'homePost' %}" method="post" class="form">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <h3>IQ Score</h3>
+            <input type="number" id="iq_score" name="iq_score" min="0">
+        </div>
+
+        <!-- Communication Skills -->
+        <div class="form-group">
+            <h3>Communication Skills</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="communication_skills" id="communication{{ i }}" value="{{ i }}">
+            <label for="communication{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <!-- Other skills -->
+        <div class="form-group">
+            <h3>Project Management Experience</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="project_management_experience" id="project_management{{ i }}" value="{{ i }}">
+            <label for="project_management{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Programming Proficiency</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="programming_proficiency" id="programming{{ i }}" value="{{ i }}">
+            <label for="programming{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Leadership Ability</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="leadership_ability" id="leadership{{ i }}" value="{{ i }}">
+            <label for="leadership{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Technical Knowledge</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="technical_knowledge" id="technical{{ i }}" value="{{ i }}">
+            <label for="technical{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Creativity Score</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="creativity_score" id="creativity{{ i }}" value="{{ i }}">
+            <label for="creativity{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Analytical Skills</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="analytical_skills" id="analytical{{ i }}" value="{{ i }}">
+            <label for="analytical{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Teamwork Ability</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="teamwork_ability" id="teamwork{{ i }}" value="{{ i }}">
+            <label for="teamwork{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <h3>Problem Solving Ability</h3>
+            {% for i in selection_range %}
+            <input type="radio" name="problem_solving_ability" id="problem_solving{{ i }}" value="{{ i }}">
+            <label for="problem_solving{{ i }}">{{ i }}</label>
+            {% endfor %}
+        </div>
+
+        <input type="submit" value="POST YOUR CHOICE" class="btn">
+    </form>
+
+    <!-- This error will notify the user if there are issues with the POST request -->
+    {% if errorMessage %}
+    <p class="error"><strong>{{ errorMessage }}</strong></p>
+    {% endif %}
+</div>
+{% endblock content %}
